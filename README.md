@@ -68,4 +68,4 @@ This project involves the statistical analysis of nanoparticle size data obtaine
 - Temperature does not appear to significantly influence particle size within the observed range.
 
 ---
-
+© 2014 — Project by Tushar Sachdev
