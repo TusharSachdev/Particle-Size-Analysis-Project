@@ -2,83 +2,70 @@
 
 ## Project Overview
 
-This project focuses on analyzing the **Dynamic Light Scattering (DLS) Particle Size** data for different materials under varying conditions, primarily temperature. The objective is to understand how factors like temperature and material type influence the particle size distribution and whether these factors significantly affect the particle size.
+This project involves the statistical analysis of nanoparticle size data obtained from Dynamic Light Scattering (DLS) measurements. The main objective is to explore the relationship between particle size and experimental conditions (primarily temperature), identify any outliers, and perform regression analysis to understand potential influencing factors.
 
 ---
 
 ## Objectives
 
-- To assess the distribution and variability of particle size measured by DLS.
-- To evaluate the effect of **Temperature** on particle size using linear regression.
-- To investigate whether different **Materials** result in significantly different particle sizes using ANOVA.
-- To identify and analyze outliers in the particle size data.
-- To explore potential interaction effects between Temperature and Material.
-- To ensure statistical assumptions are met for valid inference.
+- Analyze the distribution of nanoparticle sizes.
+- Detect and report outliers in the dataset.
+- Perform regression analysis to evaluate the effect of temperature on particle size.
+- Summarize key statistical metrics for particle size.
 
 ---
 
 ## Tools and Libraries Used
 
-- **Python**: Main programming language used for data analysis.
-- **Pandas**: Data manipulation and cleaning.
-- **NumPy**: Numerical operations.
-- **Statsmodels**: Statistical modeling including OLS regression and ANOVA.
-- **Matplotlib / Seaborn** (optional): Visualization of data distributions and relationships.
+- **Python 3.x**
+- **Pandas** for data manipulation and summary statistics.
+- **NumPy** for numerical operations.
+- **Statsmodels** for statistical modeling and regression analysis.
+- **Matplotlib / Seaborn** (optional) for data visualization.
+- Jupyter Notebook / Google Colab as the interactive coding environment.
 
 ---
 
 ## Data Description
 
-- **Data Source**: Experimental DLS particle size measurements for various samples.
-- **Key Variables**:
-  - `DLS_Particle_Size_nm`: Particle size measured in nanometers.
-  - `Temperature_C`: Temperature in degrees Celsius during measurement.
-  - `Material`: Type of material/sample.
-  - `Sample_ID`: Unique identifier for each sample.
-
-- **Data Summary** (example):
-  - Number of observations: 500
-  - Particle size mean: ~150 nm
-  - Particle size range: ~74 nm to ~250 nm
-  - Presence of some outliers identified by z-score and IQR methods.
+- **DLS_Particle_Size_nm:** Numeric variable representing the nanoparticle size measured in nanometers.
+- **Temperature_C:** Numeric variable representing the temperature at which the measurement was taken.
+- Dataset contains 500 observations.
 
 ---
 
 ## Analysis Performed
 
-### 1. Exploratory Data Analysis (EDA)
-- Summary statistics for particle size.
-- Visualization to inspect data distribution and identify outliers.
+### 1. Descriptive Statistics
+
+- Calculated count, mean, standard deviation, minimum, quartiles, and maximum for nanoparticle size.
+- Summary:
+  - Count: 500
+  - Mean particle size: ~150.23 nm
+  - Standard deviation: ~24.46 nm
+  - Range: 74.09 nm to 249.71 nm
 
 ### 2. Outlier Detection
-- Calculated z-scores and Interquartile Range (IQR) to detect outliers.
-- Identified and flagged outliers for further consideration.
+
+- Used Z-score and Interquartile Range (IQR) methods to detect outliers.
+- Identified 3 extreme outliers using Z-score method (threshold ±3).
+- Identified 4 outliers using IQR method (1.5 * IQR rule).
 
 ### 3. Regression Analysis
-- Performed **Ordinary Least Squares (OLS)** regression to test the relationship between particle size (`DLS_Particle_Size_nm`) and temperature (`Temperature_C`).
-- Result: Temperature was **not a significant predictor** of particle size (p > 0.05).
 
-### 4. Analysis of Variance (ANOVA)
-- Tested for differences in particle size across different material groups.
-- Ensured there were multiple materials in the dataset to perform valid ANOVA.
-- Interpreted results for group differences.
-
-### 5. Interaction Effects
-- Investigated if interaction between temperature and material influences particle size.
-
-### 6. Assumption Checks
-- Checked normality of residuals.
-- Tested homoscedasticity and linearity assumptions.
+- Conducted Ordinary Least Squares (OLS) regression to examine the effect of temperature on particle size.
+- Results:
+  - Regression coefficient for Temperature: -0.8374 (not statistically significant, p = 0.247)
+  - R-squared: 0.003, indicating temperature explains very little variance in particle size.
+- Conclusion: No strong evidence that temperature affects particle size in this dataset.
 
 ---
 
 ## Key Findings and Interpretation
 
-- **Temperature** does not significantly affect particle size within the observed range.
-- Particle size varies among different **Materials**; however, statistical significance depends on having multiple groups.
-- Some samples were identified as outliers, which may influence the analysis.
-- No strong evidence of interaction effects between temperature and material.
-- Overall, particle size is relatively stable across tested conditions but varies by material type.
+- The particle size measurements are generally consistent with a mean of about 150 nm and moderate variability.
+- A small number of extreme values were detected as outliers and may require further investigation or exclusion depending on context.
+- Temperature does not appear to significantly influence particle size within the observed range.
 
 ---
 
